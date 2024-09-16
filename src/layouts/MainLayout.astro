@@ -2,6 +2,9 @@
 import { Image } from "astro:assets";
 
 import LOGO from '../assets/svgs/logo.svg'
+import {SITE_TITLE,DESCRIPTION} from '../constants'
+
+const {title ='Articles, Stories & Tutorials for Tech Enthusiasts'} = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -9,6 +12,7 @@ import LOGO from '../assets/svgs/logo.svg'
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={DESCRIPTION}>
     <link rel="shortcut icon" href="/src/assets/svgs/favicon.svg" type="image/x-icon">
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.js"
@@ -16,9 +20,9 @@ import LOGO from '../assets/svgs/logo.svg'
       crossorigin="anonymous"
       referrerpolicy="no-referrer">
     </script>
-    <title>Tech People Blog</title>
+    <title>{SITE_TITLE} | {title}</title>
   </head>
-  <body class="">
+  <body>
     <nav class="bg-slate-900 text-white">
       <div class=" container max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 px-8">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
