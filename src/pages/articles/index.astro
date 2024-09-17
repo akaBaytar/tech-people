@@ -1,16 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
-
 import MainLayout from '../../layouts/MainLayout.astro';
 import Card from '../../components/Card.astro';
 
-const articles: CollectionEntry<'articles'>[] = (
-  await getCollection('articles')
-).sort(
-  (a: CollectionEntry<'articles'>, b: CollectionEntry<'articles'>) =>
-    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+import { articles } from '../../utils/getArticles';
 ---
 
 <MainLayout title='Articles'>
