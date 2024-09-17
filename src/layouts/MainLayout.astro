@@ -22,8 +22,8 @@ const { title = 'Articles, Stories & Tutorials' } = Astro.props;
       integrity='sha512-BJ/5sR2hFxQTKin/55JQCcMTObShDBAmVjL/3NR/MVcrhyOazJjAgvROem03+HYyGw16SVdSfoWCFGr9syxAKA=='
       crossorigin='anonymous'
       referrerpolicy='no-referrer'
-      is:inline
-    ></script>
+      is:inline>
+    </script>
     <title>{SITE_TITLE} | {title}</title>
   </head>
   <body>
@@ -34,3 +34,17 @@ const { title = 'Articles, Stories & Tutorials' } = Astro.props;
     <Footer />
   </body>
 </html>
+
+<style is:global>
+  ::-webkit-scrollbar {
+    @apply w-2.5 h-2.5 bg-slate-300;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-slate-900 border-[1px] border-transparent border-solid bg-clip-padding;
+  }
+</style>
