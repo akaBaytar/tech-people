@@ -1,0 +1,24 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import Card from '../../../components/Card.astro';
+
+import { articles } from '../../../utils/getArticles';
+
+const { tag } = Astro.params;
+
+const tagRelatedArticles = articles.filter((article) =>
+  article.data.tags.includes(tag)
+);
+---
+
+<MainLayout title='Articles'>
+  <a
+    href='/articles'
+    class='inline-block bg-violet-100 py-1 px-2 text-xs mb-4 hover:bg-violet-500 hover:text-white rounded-md'>
+    Back To Articles
+  </a>
+  <h1 class='text-2xl'>Articles related with #{tag}</h1>
+  <div class='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+    {tagRelatedArticles.map((article) => <Card article={article} />)}
+  </div>
+</MainLayout>
