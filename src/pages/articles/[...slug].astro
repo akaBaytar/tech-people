@@ -3,6 +3,7 @@ import { getEntry } from 'astro:content';
 
 import { formatDate } from '../../utils/formatDate';
 import MainLayout from '../../layouts/MainLayout.astro';
+import Tags from '../../components/Tags.astro';
 
 const { slug } = Astro.params;
 
@@ -29,13 +30,7 @@ const { Content } = await article.render();
       Written by {article.data.author} on {formatDate(article.data.pubDate)}
     </h3>
     <div class='flex flex-wrap gap-2 mb-4'>
-      {
-        article.data.tags.map((tag: string) => (
-          <span class='py-1 px-2 bg-violet-500 text-white rounded-full text-xs hover:opacity-90'>
-            <a href={`/articles/tag/${tag}`}>{tag}</a>
-          </span>
-        ))
-      }
+      <Tags tags={article.data.tags} />
     </div>
     <img
       src={`/${article.data.image}`}
