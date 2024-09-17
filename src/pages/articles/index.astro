@@ -2,17 +2,22 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
+import { formatDate } from '../../utils/formatDate';
 import MainLayout from '../../layouts/MainLayout.astro';
 
-const allBlogArticles: CollectionEntry<'articles'>[] =
-  await getCollection('articles');
+const articles: CollectionEntry<'articles'>[] = (
+  await getCollection('articles')
+).sort(
+  (a: CollectionEntry<'articles'>, b: CollectionEntry<'articles'>) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 ---
 
 <MainLayout title='Articles'>
-  <h1 class='text-2xl pb-3'>All Articles</h1>
+  <h1 class='text-2xl'>All Articles</h1>
   <div class='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'>
     {
-      allBlogArticles.map((article) => (
+      articles.map((article) => (
         <div class='max-w-md mx-auto mt-10'>
           <div class='bg-white rounded-lg overflow-hidden shadow-lg'>
             <a href={`/articles/${article.slug}`}>
@@ -26,7 +31,10 @@ const allBlogArticles: CollectionEntry<'articles'>[] =
               <h2 class='text-2xl font-semibold mb-2 line-clamp-2'>
                 <a href={`/articles/${article.slug}`}>{article.data.title}</a>
               </h2>
-              <p class='text-gray-600 text-sm mb-4'>{article.data.pubDate}</p>
+              <time class='block text-gray-400 font-serif text-sm my-2'>
+                {formatDate(article.data.pubDate)}
+              </time>
+              <p class='line-clamp-3 text-sm mb-4'>{article.data.desc}</p>
               <div class='flex flex-wrap gap-2'>
                 {article.data.tags.map((tag: string, idx: number) => (
                   <span
