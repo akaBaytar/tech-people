@@ -1,0 +1,36 @@
+---
+import { formatDate } from '../utils/formatDate';
+
+const { article } = Astro.props;
+---
+
+<div
+  class='relative inline-block w-full sm:w-auto cursor-pointer rounded-lg mt-6 lg:mt-0'>
+  <a href={`articles/${article.slug}`}>
+    <img
+      src={article.data.image}
+      alt={article.data.title}
+      class='w-full h-auto rounded-lg'
+    />
+    <div
+      class='absolute inset-0 flex flex-col items-center justify-center bg-black opacity- hover:opacity-75 transition duration-300 ease-in-out text-white text-center rounded-lg'>
+      <div>
+        <h2 class='text-2xl font-semibold sm:text-3xl px-4'>
+          {article.data.title}
+        </h2>
+        <p class='text-sm mt-4 font-serif'>
+          {formatDate(article.data.pubDate)}
+        </p>
+        <div class='flex mt-4 justify-center'>
+          {
+            article.data.tags.map((tag: string) => (
+              <span class='px-2 py-1 border text-white rounded-full text-xs mr-2'>
+                {tag}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
