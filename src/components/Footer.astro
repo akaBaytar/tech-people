@@ -1,63 +1,61 @@
-<footer class='bg-slate-900 text-white'>
-  <div class='container mx-auto mt-10 max-w-screen-xl px-8'>
-    <div class='grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4'>
-      <div class='mt-10'>
+---
+import { articles } from '../utils/getArticles';
+
+const tags: string[] = articles.flatMap((article) => article.data.tags);
+const uniqueTags: string[] = [...new Set(tags)];
+---
+
+<footer class='bg-slate-900 text-white text-center'>
+  <div class='container mx-auto mt-10 max-w-screen-xl px-8 pb-10'>
+    <div class='grid grid-cols-1 gap-4 lg:grid-cols-3'>
+      <div class='mt-10 flex flex-col items-center'>
         <h3 class='text-xl font-semibold mb-4'>About</h3>
-        <p class='text-white text-sm'>
+        <p class='text-white text-sm max-w-96 lg:text-start'>
           TechPeople is a blog for tech enthusiasts. We publish articles,
           stories and tutorials about the latest technology trends and
           advancements.
         </p>
       </div>
-      <div class='mt-10'>
+      <div class='mt-10 flex flex-col items-center'>
         <h3 class='text-xl font-semibold mb-4'>Categories</h3>
-        <ul class='text-white text-sm'>
-          <li class='mb-2'>
-            <a href='#'>Tech</a>
-          </li>
-          <li class='mb-2'>
-            <a href='#'>Programming</a>
-          </li>
-          <li class='mb-2'>
-            <a href='#'>Gadgets</a>
-          </li>
-          <li class='mb-2'>
-            <a href='#'>Hardware</a>
-          </li>
-          <li class='mb-2'>
-            <a href='#'>Software</a>
-          </li>
-          <li class='mb-2'>
-            <a href='#'>VR</a>
-          </li>
-          <li class='mb-2'>
-            <a href='#'>Smartphones</a>
-          </li>
-          <li class='mb-2'>
-            <a href='#'>Cameras</a>
-          </li>
-          <li class='mb-2'>
-            <a href='#'>Drones</a>
-          </li>
+        <ul class='text-white text-sm grid grid-cols-2 max-w-60'>
+          {
+            uniqueTags.map((tag) => (
+              <li class='mb-1 text-start'>
+                <a href={`/articles/tag/${tag}`}>#{tag}</a>
+              </li>
+            ))
+          }
         </ul>
       </div>
       <div class='mt-10'>
         <h3 class='text-xl font-semibold mb-4'>Contact</h3>
-        <ul class='text-white text-sm'>
-          <li class='mb-2'>
-            <a href='#'>Email</a>
+        <ul class='text-white text-sm flex gap-4 justify-center'>
+          <li class='mb-2 flex justify-center'>
+            <a href='mailto:contact@burakbilgili.co.uk'>
+              <img src='/src/assets/svgs/mail.svg' width={24} />
+            </a>
           </li>
-          <li class='mb-2'>
-            <a href='#'>Twitter</a>
+          <li class='mb-2 flex justify-center'>
+            <a href='https://www.linkedin.com/in/akabaytar/' target='_blank'>
+              <img src='/src/assets/svgs/linkedin.svg' width={24} />
+            </a>
           </li>
-          <li class='mb-2'>
-            <a href='#'>Facebook</a>
+          <li class='mb-2 flex justify-center'>
+            <a href='https://github.com/akaBaytar' target='_blank'>
+              <img src='/src/assets/svgs/github.svg' width={24} />
+            </a>
           </li>
-          <li class='mb-2'>
-            <a href='#'>Instagram</a>
+          <li class='mb-2 flex justify-center'>
+            <a href='https://x.com/akaBaytar' target='_blank'>
+              <img src='/src/assets/svgs/x.svg' width={24} />
+            </a>
           </li>
         </ul>
       </div>
     </div>
+  </div>
+  <div class='pb-8 text-xs font-light opacity-50 select-none'>
+    &copy; {new Date().getFullYear()} All rights reserved. Burak Bilgili
   </div>
 </footer>
