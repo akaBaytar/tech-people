@@ -1,0 +1,48 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import SearchForm from '../../components/SearchForm.astro';
+import Card from '../../components/Card.astro';
+
+import { articles } from '../../utils/getArticles';
+
+const query: string | null = Astro.url.searchParams.get('query');
+const searchResult = articles.filter((article) => {
+  const titleMatch: boolean = article.data.title
+    .toLowerCase()
+    .includes(query!.toLowerCase());
+
+  const descMatch: boolean = article.data.desc
+    .toLowerCase()
+    .includes(query!.toLowerCase());
+
+  const slugMatch: boolean = article.slug
+    .toLowerCase()
+    .includes(query!.toLowerCase());
+
+  const bodyMatch: boolean = article.body
+    .toLowerCase()
+    .includes(query!.toLowerCase());
+
+  return titleMatch || descMatch || bodyMatch || slugMatch;
+});
+---
+
+<MainLayout title='Search Results'>
+  <a
+    href='/articles'
+    class='inline-block bg-violet-100 py-1 px-2 text-xs mb-6 hover:bg-violet-500 hover:text-white rounded-md'>
+    Back To Articles
+  </a>
+  <SearchForm />
+  <h1 class='text-2xl pb-4 mt-6'>Results for <strong>{query}</strong></h1>
+  <div
+    class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:min-h-[35vh]'>
+    {
+      searchResult.length >= 1 ? (
+        searchResult.map((article) => <Card article={article} />)
+      ) : (
+        <p class='break-normal'>No articles were found.</p>
+      )
+    }
+  </div>
+</MainLayout>

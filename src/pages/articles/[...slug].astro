@@ -11,7 +11,7 @@ if (slug === undefined) throw new Error('Slug is undefined.');
 
 const article = await getEntry('articles', slug);
 
-if (article === undefined) Astro.redirect('/404');
+if (article === undefined) return Astro.redirect('/404');
 
 const { Content } = await article.render();
 ---
