@@ -2,8 +2,6 @@
 
 > TechPeople is a tech blog featuring the latest trends, tools, and insights for developers and tech enthusiasts. Built with Astro and TypeScript, it offers fast, easy-to-read articles on everything from coding tips to hardware reviews.
 
-burakbilgili-techpeople.vercel.app
-
 ## Table of Contents
 
 - [Live Demo](#live-demo)
@@ -24,7 +22,7 @@ burakbilgili-techpeople.vercel.app
 
 ## Technologies Used
 
-**Next Job uses the following technologies:**
+**TechPeople uses the following technologies:**
 
 - Astro
 - TypeScript
