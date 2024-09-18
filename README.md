@@ -1,6 +1,8 @@
 # TechPeople
 
-> A tech blog built with Astro collections, Markdown & TypeScript.
+> TechPeople is a tech blog featuring the latest trends, tools, and insights for developers and tech enthusiasts. Built with Astro and TypeScript, it offers fast, easy-to-read articles on everything from coding tips to hardware reviews.
+
+burakbilgili-techpeople.vercel.app
 
 ## Table of Contents
 
@@ -14,11 +16,11 @@
 
 ## Live Demo
 
-- You can access the live demo via [Vercel]().
+- You can access the live demo via [Vercel](https://burakbilgili-techpeople.vercel.app).
 
 ## Screen
 
-[<img src="./public/screen.png" />]()
+[<img src="./public/screen.png" />](https://burakbilgili-techpeople.vercel.app)
 
 ## Technologies Used
 
